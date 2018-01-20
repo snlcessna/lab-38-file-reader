@@ -1,6 +1,6 @@
 401 JS --  Lab 38 photo uploads
 ===
-
+**Forked and starting placeholder for submission.**
 ## Submission Instructions
   * Work in a fork of this repository
   * Work in a branch on your fork
@@ -12,23 +12,23 @@
 
 ## Requirements  
 #### backend setup
-* use [sluggram](http://github.com/slugbyte/sluggram) 
+* use [sluggram](http://github.com/slugbyte/sluggram)
 * or use your mid 401 project
 
- 
-#### Feature Tasks 
+
+#### Feature Tasks
 * Create a SettingsContainer
   * give the user the ablity to create or update thier profile
-  
+
 * Create a DashboardContainer
   * give the user the abilty to create, read, update and destroy photos
 
 #### Test
-* Test your redux reducers 
+* Test your redux reducers
 * Test your util methods
 
 ## Bonus 2pts
-* Create full crud for two resources 
+* Create full crud for two resources
 
 ####  Documentation  
 Write a description of the project in your README.md
