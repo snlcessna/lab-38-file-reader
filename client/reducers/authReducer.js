@@ -31,6 +31,11 @@ export default (state = initialState, action) => {
             newState.message = payload;
             return newState;
 
+        case 'UPDATE':
+            newState.message = payload.message;
+            newState.loggedIn = !payload.authenticated;
+            return newState;
+
         default:
             return newState
     }

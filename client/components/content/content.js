@@ -1,5 +1,7 @@
 import React from 'react';
 import ReactDom from 'react-dom';
+import Update from './update';
+import Photo from './photo';
 
 class Content extends React.Component {
     constructor(props) {
@@ -8,15 +10,15 @@ class Content extends React.Component {
 
     handleSignout = (e) => {
         event.preventDefault();
-        this.props.signout();
+        this.props.actions.signout();
     }
 
     render() {
         return (
             <div>
-                Sign Out
+              <Update update={this.props.actions.update} error={this.props.actions.error} />
                 <button onClick={this.handleSignout}>Sign Out</button>
-
+                <Photo />
             </div>
         )
     }

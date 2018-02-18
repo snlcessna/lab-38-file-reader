@@ -54,3 +54,19 @@ test('Test that signin changes loggedIn to true when given an authenticated cred
   expect(state.loggedIn).toEqual(action.payload.authenticated);
 
 });
+
+test('Test that updating password will log user out', () => {
+    let initialState = {
+        loggedIn: true
+    };
+    let action = {
+        type: 'UPDATE',
+        payload: {
+            message: "Account updated",
+            authenticated: false
+        }
+    };
+
+    let state = reducer(initialState, action);
+    expect(state.loggedIn).toEqual(!action.payload.authenticated);
+})

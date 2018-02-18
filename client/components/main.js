@@ -10,6 +10,7 @@ import Content from './content/content.js';
 
 class Main extends React.Component {
     constructor(props) {
+      console.log(props);
         super(props);
         props.init();
     }
@@ -21,7 +22,7 @@ class Main extends React.Component {
                     <Link to="/">Home</Link>
                 </nav>
                 <main>
-                    {(this.props.state.auth.loggedIn) ? <Content signout={this.props.signout}/> : <Home error={this.props.error} auth={this.props} state={this.props.state}/>}
+                    {(this.props.state.auth.loggedIn) ? <Content actions={this.props}/> : <Home error={this.props.error} auth={this.props} state={this.props.state}/>}
                 </main>
             </div>
         )
@@ -41,7 +42,8 @@ const mapDispatchToProps = (dispatch, payload) => {
         signin: payload => dispatch(actions.auth_signin(payload)),
         signout: payload => dispatch(actions.auth_signout(payload)),
         init: () => dispatch(actions.auth_init()),
-        error: message => dispatch(actions.error(message))
+        error: message => dispatch(actions.error(message)),
+        update: payload => dispatch(actions.auth_update(payload))
     }
 }
 

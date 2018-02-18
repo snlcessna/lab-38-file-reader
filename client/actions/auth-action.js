@@ -1,11 +1,6 @@
 import superagent from 'superagent';
 import cookie from 'react-cookies';
 
-//cookie.save('Auth', 'hello');
-
-
-//console.log(cookie.load('Auth'));
-
 const signup = (payload) => ({
     type: 'SIGNUP',
     payload
@@ -23,6 +18,11 @@ const signout = (payload) => ({
 
 const init = (payload) => ({
     type: 'INIT',
+    payload
+});
+
+const update = (payload) => ({
+    type: 'UPDATE',
     payload
 });
 
@@ -44,7 +44,6 @@ export const auth_signup = payload => dispatch => {
 
 }
 
-
 export const auth_signin = payload => dispatch => {
     let {username, password} = payload;
     superagent('http://localhost:3000/signin').auth(username, password).end((err, response) => {
@@ -60,5 +59,13 @@ export const auth_signout = payload => dispatch => {
     superagent('http://localhost:3000/logout').set('Authorization', `Bearer ${auth}`).end((err, response) => {
         cookie.remove('Auth');
         dispatch(signout());
+    });
+}
+
+export const auth_update = payload => dispatch => {
+
+    superagent('http://localhost:3000/update').auth(`${payload.username}:${payload.oldPassword}:${payload.newPassword}`).end((err, response) => {
+      if(response.body.authenticated){cookie.remove('Auth')}
+      dispatch(update(response.body));
     });
 }

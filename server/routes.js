@@ -21,3 +21,8 @@ app.get('/logout', jwtAuth.logout, (req, res, next) => {
     res.send(req.user);
     next();
 });
+
+app.get('/update', jwtAuth.update, (req, res, next) => {
+    res.send(req.user);
+    next();
+});
